@@ -109,6 +109,8 @@ def draw(
         if type(object) == Polygon:
             for i in range(0, len(object.vertices)):
                 x1, y1 = object.vertices[i]
+
+                # what is happening here?
                 x2, y2 = object.vertices[(i + 1) % len(object.vertices)]
                 plt.plot([x1, x2], [y1, y2], color=object.color)
             if object.fill:
