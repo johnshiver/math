@@ -30,8 +30,15 @@ def scale(scalar, v):
     return (scalar * v[0], scalar * v[1])
 
 
+## trigonometry section functions ---------------------------------
+
+
 def to_cartesian(polar_vector):
-    length, angle = polar_vector[0], polar_vector[1]
+    """
+    to_cartesian takes a polar_vector coordinate (length, angle)
+    and translates it to caretesian coordinates (x, y)
+    """
+    length, angle = polar_vector
     return (length * cos(angle), length * sin(angle))
 
 
@@ -45,6 +52,13 @@ def translate(translation, vectors):
 
 
 def to_polar(vector):
-    x, y = vector[0], vector[1]
+    """
+    to polar takes a vector (cartesian coordinates x,y) and returns polar coordinates (length, angle)
+
+    NOTE: angle is calculated using arctan. Inverse trigonomic functions are tricky, because trignomic functions
+          can have multiple inputs produce the same output, inversing them is not necessarily deterministic.
+          that is why arctan is required here because it does work correctly
+    """
+    x, y = vector
     angle = atan2(y, x)
     return (length(vector), angle)
