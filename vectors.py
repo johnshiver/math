@@ -11,7 +11,8 @@ def add(*vectors):
 
 # pythagorean theorem
 def length(v):
-    return sqrt(v[0] ** 2 + v[1] ** 2)
+    x, y = v
+    return sqrt(x**2 + y**2)
 
 
 def distance(v1, v2):
@@ -30,6 +31,10 @@ def scale(scalar, v):
     return (scalar * v[0], scalar * v[1])
 
 
+def translate(translation, vectors):
+    return [add(translation, v) for v in vectors]
+
+
 ## trigonometry section functions ---------------------------------
 
 
@@ -45,10 +50,6 @@ def to_cartesian(polar_vector):
 def rotate(angle, vectors):
     polars = [to_polar(v) for v in vectors]
     return [to_cartesian((l, a + angle)) for l, a in polars]
-
-
-def translate(translation, vectors):
-    return [add(translation, v) for v in vectors]
 
 
 def to_polar(vector):
