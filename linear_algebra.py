@@ -46,10 +46,55 @@ def gaussian_elimination(A, b):
 
 
 def matrix_rank(matrix):
+    """
+    From ChatGPT 4:
+
+    The rank of a matrix is defined as the maximum number of linearly independent rows or columns in the matrix.
+
+    Here are some key points regarding the rank:
+
+    - It represents the dimension of the column space (also called the range) and the row space of the matrix.
+
+    - The rank of a matrix can be used to determine the solvability of a system of linear equations.
+      If the rank of the coefficient matrix (A) is equal to the rank of the augmented matrix ([A|b]),
+      then the system has a solution. If the rank is less than the number of unknowns,
+      there are infinitely many solutions. If the rank of A is less than the rank of the augmented matrix,
+      the system has no solution.
+
+    - The rank can help identify linear dependencies among the rows or columns of a matrix.
+      If a matrix has full rank (i.e., the rank is equal to the number of rows or columns, whichever is smaller),
+      all rows and columns are linearly independent, and the matrix is invertible if it is square.
+
+    - The rank of a product of two matrices (A * B) cannot exceed the rank of either A or B.
+
+    Applications of matrix rank include:
+
+    - Solving systems of linear equations: The rank helps determine the existence and uniqueness of solutions.
+
+    - Linear transformations: In the context of linear transformations, the rank is the dimension of the output space
+      (i.e., the image of the transformation). It helps analyze the properties of the transformation, such as injectivity and surjectivity.
+
+    - Data analysis and dimensionality reduction: In data analysis, rank can be used to identify linear relationships
+      between variables and reduce the dimensionality of data. Principal component analysis (PCA), for instance,
+      uses the rank and the eigenvectors of the covariance matrix to project data onto a lower-dimensional space.
+
+    - Matrix approximations: In some applications, it's useful to approximate a matrix by a lower-rank matrix. For example,
+      singular value decomposition (SVD) can be used to approximate a matrix by retaining only the most significant singular
+      values and vectors, reducing storage and computation costs while preserving the most important information.
+
+    """
     return np.linalg.matrix_rank(matrix)
 
 
 def row_echelon_form(matrix):
+    """
+    a = np.array([[1, 2, 3], [0, 1, 4], [0, 0, 1]])
+    print(reduced_row_echelon_form(a))
+
+    [[1. 0. 0.]
+    [0. 1. 0.]
+    [0. 0. 1.]]
+    """
     matrix = matrix.astype(float)
     n_rows, n_cols = matrix.shape
 
@@ -74,6 +119,43 @@ def row_echelon_form(matrix):
 
         for r in range(row + 1, n_rows):
             factor = matrix[r, col] / pivot
+            matrix[r] -= factor * matrix[row]
+
+        row += 1
+
+    return matrix
+
+
+def reduced_row_echelon_form(matrix):
+    matrix = matrix.astype(float)
+    n_rows, n_cols = matrix.shape
+
+    row = 0
+    for col in range(n_cols):
+        if row >= n_rows:
+            break
+
+        pivot = matrix[row, col]
+        if pivot == 0:
+            nonzero_row = None
+            for r in range(row + 1, n_rows):
+                if matrix[r, col] != 0:
+                    nonzero_row = r
+                    break
+
+            if nonzero_row is None:
+                continue
+            else:
+                matrix[[row, nonzero_row]] = matrix[[nonzero_row, row]]
+                pivot = matrix[row, col]
+
+        matrix[row] /= pivot
+
+        for r in range(n_rows):
+            if r == row:
+                continue
+
+            factor = matrix[r, col]
             matrix[r] -= factor * matrix[row]
 
         row += 1
