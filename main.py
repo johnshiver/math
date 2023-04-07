@@ -7,6 +7,7 @@ import numpy as np
 def main():
     a = np.array([[1, 2, 3], [0, 1, 4], [0, 0, 1]])
     print(reduced_row_echelon_form(a))
+    plot_lines(a)
 
 
 if __name__ == "__main__":
@@ -14,5 +15,4 @@ if __name__ == "__main__":
 
 
 """
-
 """
