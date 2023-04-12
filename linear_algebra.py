@@ -156,6 +156,36 @@ def row_echelon_form(matrix):
     [[1. 0. 0.]
     [0. 1. 0.]
     [0. 0. 1.]]
+
+
+    From chatGPT:
+
+    Transforming a matrix into its row echelon form (REF) can be beneficial for several reasons, particularly when dealing with systems of linear equations:
+
+    - Simplification: The row echelon form simplifies a matrix by having zeros below the diagonal,
+                      making it easier to work with when solving systems of linear equations or
+                      performing other operations. The triangular structure of the REF allows for
+                      the efficient use of back-substitution to solve the linear system.
+
+    - Rank determination: The row echelon form allows you to easily determine the rank of a matrix,
+                          which is the number of non-zero rows in the REF. The rank is an important property,
+                          as it tells you about the dimensions of the column space and the row space, as well
+                          as the solvability of a linear system.
+
+    - Linear dependence/independence: By transforming a matrix into its row echelon form, you can easily identify
+                                      linearly dependent or independent rows (or columns) of a matrix. If a row in the
+                                      REF is all zeros, it is linearly dependent on the other rows. Otherwise, it is linearly
+                                      independent. This information is crucial in various applications, such as determining the
+                                      basis for the row or column space of a matrix.
+
+    - Consistency check: The row echelon form helps you determine if a system of linear equations is consistent (has at least one solution)
+                         or inconsistent (has no solutions). If there is a row in the augmented matrix (the matrix with the constants from
+                         the linear equations appended as a column) with all zeros except for the last element, the system is inconsistent.
+
+    - Inverse calculation: The REF is a stepping stone to finding the reduced row echelon form (RREF), which is essential for
+                           calculating the inverse of a square matrix. By row reducing a matrix augmented with the identity matrix,
+                           you can obtain the inverse (if it exists) in the identity matrix's original location.
+
     """
     matrix = matrix.astype(float)
     n_rows, n_cols = matrix.shape
@@ -189,6 +219,31 @@ def row_echelon_form(matrix):
 
 
 def reduced_row_echelon_form(matrix):
+    """
+    From chatGPT:
+
+    Both row echelon form (REF) and reduced row echelon form (RREF) are simplified
+    versions of a matrix, achieved through a series of elementary row operations.
+    However, there are some differences in the structure of the two forms:
+
+    Row Echelon Form (REF):
+
+        All zero rows (if any) are at the bottom of the matrix.
+        The first non-zero element in a non-zero row (called the pivot or leading entry) is
+        always strictly to the right of the pivot in the row above.
+        The pivot in each non-zero row is 1. All elements below the pivot in the same column are 0.
+
+    Reduced Row Echelon Form (RREF):
+
+        The RREF satisfies all the conditions of the REF.
+        Additionally, in the RREF, all elements above the pivot in the same column are also 0.
+        In summary, the RREF is a more restrictive and simplified version of the REF. The RREF has
+        zeros both above and below each pivot, whereas the REF only requires zeros below each pivot.
+
+    The RREF is unique for a given matrix, meaning that a matrix can have only one RREF.
+    However, a matrix can have multiple REFs depending on the sequence of row operations applied to it.
+    The RREF is particularly useful for solving systems of linear equations and finding the inverse of a matrix.
+    """
     matrix = matrix.astype(float)
     n_rows, n_cols = matrix.shape
 
