@@ -30,47 +30,50 @@ def main():
     # print(matrix_rank(l))
 
     # from exam
-    A = np.array(
-        [[2, -1, 1, 1], [1, 2, -1, -1], [-1, 2, 2, 2], [1, -1, 2, 1]], dtype=np.dtype(float)
-    )
-    b = np.array([6, 3, 14, 8], dtype=np.dtype(float))
-    A_system = np.hstack((A, b.reshape(4, 1)))
+    # A = np.array(
+    #     [[2, -1, 1, 1], [1, 2, -1, -1], [-1, 2, 2, 2], [1, -1, 2, 1]], dtype=np.dtype(float)
+    # )
+    # b = np.array([6, 3, 14, 8], dtype=np.dtype(float))
+    # A_system = np.hstack((A, b.reshape(4, 1)))
 
-    A_ref = SwapRows(A_system, 0, 1)
+    # A_ref = SwapRows(A_system, 0, 1)
 
-    # multiply row 0 of the new matrix A_ref by -2 and add it to the row 1
-    A_ref = AddRows(A_ref, 0, 1, -2)
+    # # multiply row 0 of the new matrix A_ref by -2 and add it to the row 1
+    # A_ref = AddRows(A_ref, 0, 1, -2)
 
-    # add row 0 of the new matrix A_ref to the row 2, replacing row 2
-    A_ref = AddRows(A_ref, 0, 2, 1)
+    # # add row 0 of the new matrix A_ref to the row 2, replacing row 2
+    # A_ref = AddRows(A_ref, 0, 2, 1)
 
-    # multiply row 0 of the new matrix A_ref by -1 and add it to the row 3
-    A_ref = AddRows(A_ref, 0, 3, -1)
+    # # multiply row 0 of the new matrix A_ref by -1 and add it to the row 3
+    # A_ref = AddRows(A_ref, 0, 3, -1)
 
-    # add row 2 of the new matrix A_ref to the row 3, replacing row 3
-    A_ref = AddRows(A_ref, 2, 3, 1)
+    # # add row 2 of the new matrix A_ref to the row 3, replacing row 3
+    # A_ref = AddRows(A_ref, 2, 3, 1)
 
-    # swap row 1 and 3 of the new matrix A_ref
-    A_ref = SwapRows(A_ref, 1, 3)
+    # # swap row 1 and 3 of the new matrix A_ref
+    # A_ref = SwapRows(A_ref, 1, 3)
 
-    # add row 2 of the new matrix A_ref to the row 3, replacing row 3
-    A_ref = AddRows(A_ref, 2, 3, 1)
+    # # add row 2 of the new matrix A_ref to the row 3, replacing row 3
+    # A_ref = AddRows(A_ref, 2, 3, 1)
 
-    # multiply row 1 of the new matrix A_ref by -4 and add it to the row 2
-    A_ref = AddRows(A_ref, 1, 2, -4)
+    # # multiply row 1 of the new matrix A_ref by -4 and add it to the row 2
+    # A_ref = AddRows(A_ref, 1, 2, -4)
 
-    # add row 1 of the new matrix A_ref to the row 3, replacing row 3
-    A_ref = AddRows(A_ref, 1, 3, 1)
+    # # add row 1 of the new matrix A_ref to the row 3, replacing row 3
+    # A_ref = AddRows(A_ref, 1, 3, 1)
 
-    # multiply row 3 of the new matrix A_ref by 2 and add it to the row 2
-    A_ref = AddRows(A_ref, 3, 2, 2)
+    # # multiply row 3 of the new matrix A_ref by 2 and add it to the row 2
+    # A_ref = AddRows(A_ref, 3, 2, 2)
 
-    # multiply row 2 of the new matrix A_ref by -8 and add it to the row 3
-    A_ref = AddRows(A_ref, 2, 3, -8)
+    # # multiply row 2 of the new matrix A_ref by -8 and add it to the row 3
+    # A_ref = AddRows(A_ref, 2, 3, -8)
 
-    # multiply row 3 of the new matrix A_ref by -1/17
-    A_ref = MultiplyRow(A_ref, 3, -1 / 17)
-    print(A_ref)
+    # # multiply row 3 of the new matrix A_ref by -1/17
+    # A_ref = MultiplyRow(A_ref, 3, -1 / 17)
+    # print(A_ref)
+    j = np.array([[1, 1], [2, 2]])
+    i_j = calculate_inverse(j)
+    print(i_j)
 
 
 def SwapRows(M, row_num_1, row_num_2):

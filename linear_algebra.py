@@ -71,6 +71,31 @@ def determinant(matrix):
     return np.linalg.det(matrix)
 
 
+# Define a custom error class
+class ErrMatrixCannotBeInverted(Exception):
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
+
+
+def calculate_inverse(matrix):
+    """
+    Inverse of a matrix is like the inverse of a number. The inverse of a number multiplied
+    by itself is 1. e.g. 2 * 1/2 = 1
+
+    The inverse of a matrix multiplied by itself is the identity matrix.
+
+    However, if the determinant of a matrix is 0, it is not invertible and an error is raised.
+    """
+    matrix = matrix.copy()
+    det = determinant(matrix)
+
+    if det == 0:
+        raise ErrMatrixCannotBeInverted("matrix is not invertible because its determinant is 0")
+
+    return np.linalg.inv(matrix)
+
+
 def gaussian_elimination(A, b):
     """
     If you'd like to perform row operations and obtain the row echelon form,
