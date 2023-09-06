@@ -1,79 +1,44 @@
 from vectors_examples import *
 from linear_algebra import *
+from vectors import *
 
 import numpy as np
 
 
 def main():
-    # a = np.array([[1, 2, 3], [0, 1, 4], [0, 0, 1]])
-    # print(reduced_row_echelon_form(a))
-    # a = np.array([[7, 5, 3], [3, 2, 5], [1, 2, 1]])
-    # c = np.array([120, 70, 20])
-    # print(solve_systems_of_equations(a, c))
-    # print(determinant(a))
-    # print(matrix_rank(a))
+    # u = (1, 3)
+    # v = (6, 2)
+    # print(add(u, v))
+    # print(subtract(u, v))
 
-    # j = np.array([[0, 1, 1], [2, 4, 2], [1, 2, 1]])
-    # k = np.array([[7.5, 5, 12.5], [3, 2, 5], [0, 0, 0]])
-    # l = np.array([[7, 5, 3], [3, 2, 5], [1, 2, 1]])
+    # a = np.array([-1, 5, 2])
+    # b = np.array([-3, 6, -4])
+    # print(a.dot(b))
 
-    # print(matrix_rank(j))
-    # print(matrix_rank(k))
-    # print(matrix_rank(l))
+    a = np.array([1, 2, -3])
+    b = np.array([0, 0, 0, 0])
+    c = np.array([1, 0, -2, 0, -1])
+    d = np.array([2, 2, 2, 2])
+    e = np.array([2, 5])
 
-    # j = np.array([[5, 2], [10, 3]])
-    # k = np.array([[0, 0], [0, 0]])
-    # l = np.array([[1, 1], [2, 2]])
+    print(np.linalg.norm(a))
+    print(np.linalg.norm(b))
+    print(np.linalg.norm(c))
+    print(np.linalg.norm(d))
+    print(np.linalg.norm(e))
 
-    # print(matrix_rank(j))
-    # print(matrix_rank(k))
-    # print(matrix_rank(l))
+    x = np.array([-1, 5, 2])
+    y = np.array([-3, 6, -4])
+    print(x.dot(y))
 
-    # from exam
-    # A = np.array(
-    #     [[2, -1, 1, 1], [1, 2, -1, -1], [-1, 2, 2, 2], [1, -1, 2, 1]], dtype=np.dtype(float)
-    # )
-    # b = np.array([6, 3, 14, 8], dtype=np.dtype(float))
-    # A_system = np.hstack((A, b.reshape(4, 1)))
+    m1 = np.array([[2, -1], [3, -3]])
+    m2 = np.array([[5, -2], [0, 1]])
 
-    # A_ref = SwapRows(A_system, 0, 1)
+    print(m1 @ m2)
 
-    # # multiply row 0 of the new matrix A_ref by -2 and add it to the row 1
-    # A_ref = AddRows(A_ref, 0, 1, -2)
-
-    # # add row 0 of the new matrix A_ref to the row 2, replacing row 2
-    # A_ref = AddRows(A_ref, 0, 2, 1)
-
-    # # multiply row 0 of the new matrix A_ref by -1 and add it to the row 3
-    # A_ref = AddRows(A_ref, 0, 3, -1)
-
-    # # add row 2 of the new matrix A_ref to the row 3, replacing row 3
-    # A_ref = AddRows(A_ref, 2, 3, 1)
-
-    # # swap row 1 and 3 of the new matrix A_ref
-    # A_ref = SwapRows(A_ref, 1, 3)
-
-    # # add row 2 of the new matrix A_ref to the row 3, replacing row 3
-    # A_ref = AddRows(A_ref, 2, 3, 1)
-
-    # # multiply row 1 of the new matrix A_ref by -4 and add it to the row 2
-    # A_ref = AddRows(A_ref, 1, 2, -4)
-
-    # # add row 1 of the new matrix A_ref to the row 3, replacing row 3
-    # A_ref = AddRows(A_ref, 1, 3, 1)
-
-    # # multiply row 3 of the new matrix A_ref by 2 and add it to the row 2
-    # A_ref = AddRows(A_ref, 3, 2, 2)
-
-    # # multiply row 2 of the new matrix A_ref by -8 and add it to the row 3
-    # A_ref = AddRows(A_ref, 2, 3, -8)
-
-    # # multiply row 3 of the new matrix A_ref by -1/17
-    # A_ref = MultiplyRow(A_ref, 3, -1 / 17)
-    # print(A_ref)
-    j = np.array([[1, 1], [2, 2]])
-    i_j = calculate_inverse(j)
-    print(i_j)
+    x = np.array([-9, -1])
+    y = np.array([-3, -5])
+    print(x.dot(y))
 
 
 def SwapRows(M, row_num_1, row_num_2):

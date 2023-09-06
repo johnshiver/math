@@ -68,7 +68,50 @@ def solve_systems_of_equations(coefficient_matrix, constant_matrix):
 
 
 def determinant(matrix):
+    """
+    From chatgpt4
+
+    Imagine you have a set of vectors in a space. These vectors can be thought of as defining a region
+    in that space. Let's consider a 2-dimensional space, for simplicity. We can draw the vectors as arrows
+    on a piece of paper, and the region they define is like a parallelogram formed by their span.
+
+    Now, the determinant is a mathematical tool that can help us understand the "size" of this region.
+    In the 2-dimensional case, the determinant gives you the area of the parallelogram. Similarly,
+    in a 3-dimensional space, it would give you the volume of the parallelepiped.
+    So, the determinant essentially helps you measure how much a given set of vectors "spreads out"
+    in the space.
+
+    Let's delve deeper into the 2-dimensional case. Say we have a matrix A with two column vectors:
+
+    A = | a b |
+        | c d |
+
+    Here, a and c are the x and y components of the first vector,
+    and b and d are the x and y components of the second vector.
+    To find the determinant, we simply calculate:
+
+    det(A) = ad - bc
+
+    Now, imagine the parallelogram formed by these two vectors. If the vectors are parallel
+    or anti-parallel (meaning they lie on the same or opposite lines), the parallelogram collapses
+    to a line, and its area is zero. In this case, the determinant is also zero, signifying that the
+    vectors are linearly dependent.
+
+    On the other hand, if the determinant is non-zero, the vectors are linearly independent,
+    meaning they "span" a non-degenerate region in the space.
+
+    To summarize, the determinant gives us an intuitive way to understand the "size" of the region
+    formed by a set of vectors in a space. It helps us determine whether the vectors are linearly
+    independent and provides a measure of their "spread" in the space.
+    In the 2-dimensional case, the determinant corresponds to the area of the parallelogram formed by
+    the vectors, while in the 3-dimensional case, it corresponds to the volume of the parallelepiped.
+    """
+
     return np.linalg.det(matrix)
+
+
+def distance_between(v1, v2):
+    return np.linalg.norm(v1 - v2)
 
 
 # Define a custom error class
