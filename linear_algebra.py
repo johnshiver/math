@@ -346,3 +346,28 @@ def reduced_row_echelon_form(matrix):
         row += 1
 
     return matrix
+
+
+def calc_eig_vals(matrix):
+    """
+    Watch: https://www.youtube.com/watch?v=PFDu9oVAE-g
+
+    Eigenvalues relate to eigenvectors. Eigenvectors are the vectors that only scale
+    during when a linear transformation is applied to a space, they arent rotated or
+    transformed in any other sort of way.
+
+    The eigenvalues are the scaling value applied to the eigenvectors.
+
+    Note: could stretch or squish the vector
+
+    Finding the eigenvectors and eigenvalues make it easier to understand exactly
+    what a particular linear transformation is doing, understanding its essence.
+    """
+
+    return np.linalg.eigvals(matrix)
+
+
+def calc_eig_vectors(matrix):
+
+    _, vectors = np.linalg.eig(matrix)
+    return vectors
